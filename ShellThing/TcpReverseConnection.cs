@@ -76,12 +76,13 @@ namespace ShellThing
             return commandReceived;
         }
 
-        public void StopClient(Socket socket)
+        public void StopClient()
         {
             // Release the socket.  
             socket.Shutdown(SocketShutdown.Both);
             IsConnected = false;
             socket.Close();
         }
+
     }
 }

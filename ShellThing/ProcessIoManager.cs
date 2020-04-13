@@ -15,7 +15,6 @@ namespace ShellThing
         private Process runningProcess;
 
         private Thread stdoutThread;
-
         private Thread stderrThread;
 
         private StringBuilder streamBuffer;
@@ -61,8 +60,11 @@ namespace ShellThing
             stderrThread.Start();
         }
 
-        public void ReadStream(int firstCharRead, StreamReader streamReader, bool isstdout)
+        private void ReadStream(int firstCharRead, StreamReader streamReader, bool isstdout)
         {
+
+            // Lock this to prevent multiple threads (Stdout and Stderr) attempting to read from the same stream simultaneously
+            // If threads were reading from the same stream simultaneously, output text would be jumbled with characters from each stream
             lock (this)
             {
                 // Single character read from either stdout or stderr

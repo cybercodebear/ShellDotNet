@@ -60,6 +60,7 @@ namespace ShellThing
 
             // Start a thread to monitor for process termination so that I/O can be redirected to the normal shell
             processMonitorThread = new Thread(StartProcessStatusMonitor);
+            processMonitorThread.IsBackground = true;
             processMonitorThread.Start();
         }
 
