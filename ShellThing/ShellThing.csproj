@@ -107,10 +107,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandShell.cs" />
-    <Compile Include="ProcessIoManager.cs" />
+    <Compile Include="ShellSpawnCommand.cs" />
+    <Compile Include="HandoffCommand.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="ShellSubProcess.cs" />
+    <Compile Include="SubProcessIoManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CommandInvoker.cs" />
     <Compile Include="TcpReverseConnection.cs" />
   </ItemGroup>
   <ItemGroup>

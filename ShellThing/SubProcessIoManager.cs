@@ -10,7 +10,7 @@ namespace ShellThing
     // of text read from stdout or stderr of a running process
     public delegate void StringReadEventHandler(string text);
 
-    class ProcessIoManager
+    class SubProcessIoManager
     {
         private Process runningProcess;
 
@@ -32,7 +32,7 @@ namespace ShellThing
 
         public event StringReadEventHandler StderrTextRead;
 
-        public ProcessIoManager(Process process, TcpReverseConnection connection)
+        public SubProcessIoManager(Process process, TcpReverseConnection connection)
         {
             if (process == null)
             {

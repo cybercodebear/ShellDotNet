@@ -6,7 +6,7 @@ namespace ShellThing
 {
     public delegate void ProcessTerminatedEventHandler(object source, EventArgs e);
 
-    public class CommandShell
+    public class ShellSubProcess
     {
         public Process Process { get; }
 
@@ -14,7 +14,7 @@ namespace ShellThing
 
         private Thread processMonitorThread;
 
-        public CommandShell(string shellType)
+        public ShellSubProcess(string shellType)
         {
             var startInfo = new ProcessStartInfo();
             startInfo.FileName = shellType;
