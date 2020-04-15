@@ -105,9 +105,8 @@ namespace ShellThing
 
         public static bool ValidateIpAddress(string ipAddress)
         {
-            IPAddress address;
 
-            if (IPAddress.TryParse(ipAddress, out address))
+            if (IPAddress.TryParse(ipAddress, out IPAddress address))
             {
                 return true;
             }
@@ -132,7 +131,7 @@ namespace ShellThing
                     return false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

