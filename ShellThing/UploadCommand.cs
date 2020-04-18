@@ -20,7 +20,22 @@ namespace ShellThing
         {
             this.connection = connection;
 
+            if (ValidateArguments(commandArguments))
+            {
+                WebClient webClient = new WebClient();
+
+                try
+                {
+                    webClient.DownloadFile(uri.ToString(), uploadPath);
+                    connection.SendData($"Upload: Successfully uploaded file to {uploadPath}\n");
+                }
+                catch (WebException e)
+                {
+                    connection.SendData($"Upload: Error - {e.Message}\n");
+                }
+            }
         }
+
 
         public bool ValidateArguments(string[] commandArguments)
         {
@@ -33,22 +48,23 @@ namespace ShellThing
                     try
                     {
                         uploadPath = Path.GetFullPath(commandArguments[2]);
+                        return true;
                     }
                     catch (Exception)
                     {
-                        connection.SendData("UploadCommand - Error: invalid file path");
+                        connection.SendData($"Upload: Invalid file path argument {commandArguments[2]}\n");
                         return false;
                     }
-
-                    return true;
                 }
                 else
                 {
+                    connection.SendData($"Upload: Invalid URL argument: {commandArguments[1]}\n");
                     return false;
                 }
             }
             else
             {
+                connection.SendData($"Upload: Error - Invalid number of arguments {commandArguments.ToString()}\n");
                 return false;
             }
         }
