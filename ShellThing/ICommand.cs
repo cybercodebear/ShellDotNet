@@ -10,5 +10,7 @@ namespace ShellThing
     public interface ICommand
     {
         void Execute(TcpReverseConnection connection, string[] commandArguments);
+
+        Dictionary<string, string> Help(bool includeSyntax); 
     }
 }

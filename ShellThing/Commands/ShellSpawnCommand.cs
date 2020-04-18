@@ -45,5 +45,18 @@ namespace ShellThing
         {
             connection.SendData(text);
         }
+
+        public Dictionary<string, string> Help(bool includeSyntax)
+        {
+            Dictionary<string, string> helpText = new Dictionary<string, string>();
+
+            
+            // Display description
+            helpText.Add("cmd", "Drop into a system command shell (cmd.exe)");
+            helpText.Add("powershell", "Drop into a system command shell (powershell.exe)");
+
+            // Display syntax or do nothing if no additional syntax required
+            return helpText;
+        }
     }
 }

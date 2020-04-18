@@ -25,6 +25,8 @@ namespace ShellThing
                 // Initialize invoker which sets commands in its constructor
                 CommandInvoker commandInvoker = new CommandInvoker(connection);
 
+                connection.SendData($"Connected! Welcome to {Environment.MachineName}\nType 'help' to see available commands\n");
+
                 while(connection.IsConnected)
                 {
                     connection.SendData(prompt);

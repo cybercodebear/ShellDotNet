@@ -36,7 +36,6 @@ namespace ShellThing
             }
         }
 
-
         public bool ValidateArguments(string[] commandArguments)
         {
             if (commandArguments.Length == 3)
@@ -68,5 +67,22 @@ namespace ShellThing
                 return false;
             }
         }
+
+
+        public Dictionary<string, string> Help(bool includeSyntax)
+        {
+            Dictionary<string, string> helpText = new Dictionary<string, string>();
+
+            helpText.Add("upload", "Upload a file to the remote host");
+
+            if (includeSyntax == true)
+            {
+                helpText.Add("syntax", "upload <target url> <file path>");
+                helpText.Add("example", "upload http(s)://192.168.1.1");
+            }
+
+            return helpText;
+        }
+
     }
 }
