@@ -8,7 +8,7 @@ namespace ShellThing
         static TcpReverseConnection connection;
         static readonly string prompt = "sh3ll> ";
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             if(args.Length != 2)
             {
