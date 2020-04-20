@@ -47,17 +47,30 @@ namespace ShellThing
             // Just get generic help text for each command
             else if (commandArguments.Length == 1)
             {
+                List<Type> completedCommands = new List<Type>();
+
                 connection.SendData("Core Commands\n=============\n\n");
                 connection.SendData($"Command{new string(' ', 18)}Description\n-------{new string(' ', 18)}-----------\n");
 
                 foreach (string command in commands.Keys)
                 {
-                    var c = (ICommand)commands[command];
-                    helpText = c.Help(false);
-
-                    foreach (string commandName in helpText.Keys)
+                    // Check whether helpText has already been displayed for another instance of the command
+                    if (completedCommands.Contains(commands[command].GetType()))
                     {
-                        connection.SendData($"{commandName}{new string(' ', (25 - commandName.Length))}{helpText[commandName]}\n");
+                        continue;
+                    }
+                    else
+                    {
+                        var c = (ICommand)commands[command];
+                        helpText = c.Help(false);
+
+
+                        foreach (string commandName in helpText.Keys)
+                        {
+                            connection.SendData($"{commandName}{new string(' ', (25 - commandName.Length))}{helpText[commandName]}\n");
+                        }
+
+                        completedCommands.Add(commands[command].GetType());
                     }
                 }
             }

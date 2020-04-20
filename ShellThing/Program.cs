@@ -12,10 +12,7 @@ namespace ShellThing
         {
             if(args.Length != 2)
             {
-                //TODO - Throw an exception or just terminate instead of writing to console
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Error - Incorrect Number of arguments");
-                Console.ResetColor();
+                throw new ArgumentException();
             }
             else
             {

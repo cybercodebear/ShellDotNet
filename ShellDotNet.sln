@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellThing", "ShellThing\ShellThing.csproj", "{7FF96727-1848-4144-A09D-ABBA773485A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stager", "Stager\Stager.csproj", "{3665A3BB-B9D7-4F8B-9A58-5480726635FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTTPStager", "Stager\HTTPStager.csproj", "{3665A3BB-B9D7-4F8B-9A58-5480726635FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
