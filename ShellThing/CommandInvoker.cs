@@ -45,6 +45,17 @@ namespace ShellThing
             {
                 connection.SendData($"Invalid Command: {commandFullString}\n");
             }
+            catch (Exception e)
+            {
+                if (e.InnerException != null)
+                {
+                    connection.SendData($"Error: {e.InnerException.Message}\n");
+                }
+                else
+                {
+                    connection.SendData($"Error: {e.Message}\n");
+                }
+            }
         }
 
 

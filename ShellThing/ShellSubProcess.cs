@@ -31,9 +31,7 @@ namespace ShellThing
 
         public void TerminateProcess()
         {
-            // processMonitorThread should detect that the process has exited and trigger OnProcessTerminated();
             Process.Kill();
-
         }
 
         //TODO: Add ability to 'background' process
