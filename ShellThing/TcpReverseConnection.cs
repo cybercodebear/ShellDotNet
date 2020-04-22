@@ -13,7 +13,7 @@ namespace ShellThing
         private Socket socket;
 
         public void StartClient(string ipAddressString, string portString)
-         {
+        {
             // Connect to a remote device.  
             try
             {

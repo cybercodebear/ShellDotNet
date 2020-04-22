@@ -49,7 +49,7 @@ namespace ShellThing
             {
                 List<Type> completedCommands = new List<Type>();
 
-                connection.SendData("Core Commands\n=============\n\n");
+                connection.SendData("\nCore Commands\n=============\n\n");
                 connection.SendData($"Command{new string(' ', 18)}Description\n-------{new string(' ', 18)}-----------\n");
 
                 foreach (string command in commands.Keys)
@@ -73,6 +73,8 @@ namespace ShellThing
                         completedCommands.Add(commands[command].GetType());
                     }
                 }
+
+                connection.SendData("\n");
             }
             else
             {
