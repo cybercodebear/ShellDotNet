@@ -26,10 +26,10 @@ namespace ShellThing.Commands
         {
             Dictionary<string, string> helpText = new Dictionary<string, string>();
             helpText.Add("persistence", "Install persistence mechanism on the target. Defefault option is Registry");
-            helpText.Add("Syntax", "persistence <option>");
 
             if (includeSyntax == true)
             {
+                helpText.Add("Syntax", "persistence <option>");
                 helpText.Add("Options", "Description");
                 helpText.Add("-------", "-----------");
                 helpText.Add("registry", "Installs stager to be executed from Run key in Registry");

