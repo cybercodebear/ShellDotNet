@@ -30,9 +30,6 @@ namespace ShellThing
                 {
                     socket.Connect(remoteEP);
                     IsConnected = true;
-
-                    Console.WriteLine("Socket connected to {0}", socket.RemoteEndPoint.ToString());
-
                 }
                 catch (ArgumentNullException ane)
                 {
