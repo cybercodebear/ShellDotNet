@@ -33,7 +33,7 @@ namespace ShellThing
             while (shell.Process.HasExited == false)
             {
                 processIoManager.WriteStdIn();
-            }         
+            }
         }
 
         private void OnStdOutRead(string text)
@@ -50,7 +50,6 @@ namespace ShellThing
         {
             Dictionary<string, string> helpText = new Dictionary<string, string>();
 
-            
             // Display description
             helpText.Add("cmd", "Drop into a system command shell (cmd.exe)");
             helpText.Add("powershell", "Drop into a system command shell (powershell.exe)");

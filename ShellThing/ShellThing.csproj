@@ -120,9 +120,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\HelpCommand.cs" />
+    <Compile Include="Commands\PersistenceCommand.cs" />
     <Compile Include="Commands\ShellSpawnCommand.cs" />
     <Compile Include="Commands\HandoffCommand.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="Persistence.cs" />
     <Compile Include="ShellSubProcess.cs" />
     <Compile Include="SubProcessIoManager.cs" />
     <Compile Include="Program.cs" />
